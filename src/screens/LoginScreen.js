@@ -52,7 +52,7 @@ export default function LoginScreen() {
         </View>
 
         <View style={styles.form}>
-          <Text style={styles.label}>E-mail</Text>
+          <Text style={styles.label}></Text>
           <TextInput
             style={styles.input}
             placeholder="E-mail"
@@ -63,7 +63,7 @@ export default function LoginScreen() {
             onChangeText={setEmail}
           />
 
-          <Text style={styles.label}>Senha</Text>
+          <Text style={styles.label}></Text>
           <TextInput
             style={styles.input}
             placeholder="Senha"
@@ -72,6 +72,10 @@ export default function LoginScreen() {
             value={password}
             onChangeText={setPassword}
           />
+
+          <View stye={styles.forgPass}>
+            <Text style={styles.fPass}>Esqueci minha senha</Text>
+          </View>
 
           <TouchableOpacity style={styles.button} onPress={handleLogin}>
             <Text style={styles.buttonText}>Entrar</Text>
@@ -127,11 +131,13 @@ const styles = StyleSheet.create({
   },
   form: {
     width: "100%",
+    height: "50%",
+    marginTop: -200,
   },
   label: {
     color: "#FFFFFF",
     fontSize: 14,
-    marginBottom: 8,
+    marginBottom: -20,
     fontWeight: "600",
   },
   input: {
@@ -145,15 +151,22 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#333333",
   },
+
+  fPass: {
+    color: "#4B338B",
+    textAlign: "right",
+    fontSize: 12,
+  },
+
   button: {
-    backgroundColor: "#A91BFF",
+    backgroundColor: "#4B338B",
     borderRadius: 20,
-    paddingVertical: 14,
+    paddingVertical: 15,
     alignItems: "center",
-    marginTop: 8,
+    marginTop: 20,
   },
   buttonText: {
-    color: "#121212",
+    color: "#FBFBFB",
     fontSize: 16,
     fontWeight: "bold",
   },
