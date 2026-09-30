@@ -11,6 +11,8 @@ import {
   Alert,
   Image,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import * as Iconsax from "iconsax-react-nativejs";
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("");
@@ -62,7 +64,6 @@ export default function LoginScreen() {
             value={email}
             onChangeText={setEmail}
           />
-
           <Text style={styles.label}></Text>
           <TextInput
             style={styles.input}
@@ -72,14 +73,26 @@ export default function LoginScreen() {
             value={password}
             onChangeText={setPassword}
           />
-
-          <View stye={styles.forgPass}>
+          <View style={styles.forgPass}>
             <Text style={styles.fPass}>Esqueci minha senha</Text>
           </View>
-
           <TouchableOpacity style={styles.button} onPress={handleLogin}>
-            <Text style={styles.buttonText}>Entrar</Text>
+            <Text style={styles.buttonText}>Entrar </Text>
+            <View style={styles.iconArrow}>
+              <Iconsax.ArrowRight size={28} color="#f9f9f9" variant="Linear" />
+            </View>
           </TouchableOpacity>
+          {/* Linha1*/}
+          <View style={styles.containerDivisoria}>
+            {/* Linha da esquerda */}
+            <View style={styles.linha} />
+
+            {/* Texto central */}
+            <Text style={styles.textoOu}>Ou</Text>
+
+            {/* Linha da direita */}
+            <View style={styles.linha} />
+          </View>
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
@@ -121,13 +134,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#050505",
     fontWeight: "bold",
+    fontFamily: "Poppins",
   },
   text2: {
-    color: "#A91BFF",
+    color: "#4B338B",
+    fontWeight: "bold",
+    fontFamily: "Poppins",
   },
   subtext: {
     fontSize: 16,
     color: "#8E8E93",
+    fontFamily: "Poppins",
   },
   form: {
     width: "100%",
@@ -139,9 +156,10 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginBottom: -20,
     fontWeight: "600",
+    fontFamily: "Poppins",
   },
   input: {
-    backgroundColor: "#D9D9D9",
+    backgroundColor: "rgba(217, 217, 217, 0.3)",
     color: "#fffbfb",
     borderRadius: 10,
     paddingHorizontal: 30,
@@ -149,25 +167,44 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: "#333333",
+    borderColor: "rgba(0, 0, 0, 0.8)",
+    fontFamily: "Poppins",
   },
 
   fPass: {
     color: "#4B338B",
     textAlign: "right",
-    fontSize: 12,
+    fontSize: 13,
+    fontFamily: "Poppins",
+    fontWeight: "bold",
   },
 
   button: {
+    flexDirection: "row",
+    justifyContent: "center",
     backgroundColor: "#4B338B",
-    borderRadius: 20,
-    paddingVertical: 15,
+    borderRadius: 30,
     alignItems: "center",
-    marginTop: 20,
+    marginTop: 10,
+    padding: 15,
   },
   buttonText: {
     color: "#FBFBFB",
     fontSize: 16,
     fontWeight: "bold",
+  },
+  iconArrow: {
+    flexDirection: "row",
+  },
+  linha: {
+    flex: 1, // Faz as duas linhas esticarem igualmente para preencher o espaço
+    height: 1, // Espessura da linha
+    backgroundColor: "#D1D5DB", // Cor da linha (cinza claro)
+  },
+  textoOu: {
+    marginHorizontal: 16, // Afasta o texto das pontas das linhas
+    color: "#6B7280", // Cor do texto
+    fontSize: 14,
+    fontWeight: "500",
   },
 });
