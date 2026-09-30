@@ -37,13 +37,14 @@ export default function LoginScreen() {
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
         >
+          {/* Logomarca */}
           <View style={styles.topo}>
             <Image
               source={require("../../assets/girocoinlogo.png")}
               style={styles.logo}
             />
           </View>
-
+          {/* Section Home */}
           <View style={styles.header}>
             <Image
               source={require("../../assets/girocoinhome.png")}
@@ -57,7 +58,7 @@ export default function LoginScreen() {
               Encontre o que faltava para sua jornada.
             </Text>
           </View>
-
+          {/* Section Login */}
           <View style={styles.form}>
             <TextInput
               style={styles.input}
@@ -76,6 +77,7 @@ export default function LoginScreen() {
               value={password}
               onChangeText={setPassword}
             />
+            {/* Login Button */}
             <View style={styles.forgPass}>
               <Text style={styles.fPass}>Esqueci minha senha</Text>
             </View>
@@ -83,11 +85,31 @@ export default function LoginScreen() {
               <Text style={styles.buttonText}>Entrar </Text>
               <Iconsax.ArrowRight size={28} color="#f9f9f9" variant="Linear" />
             </TouchableOpacity>
-
+            {/* Line Divider */}
             <View style={styles.divider}>
               <View style={styles.line} />
               <Text style={styles.dividerText}>Ou</Text>
               <View style={styles.line} />
+            </View>
+            {/* Section Social */}
+            <View style={styles.containerSocial}>
+              <Image
+                source={require("../../assets/googleIcon.png")}
+                style={styles.iconG}
+              ></Image>
+              <Image
+                source={require("../../assets/appleIcon.png")}
+                style={styles.iconA}
+              ></Image>
+              <Image
+                source={require("../../assets/instaIcon.png")}
+                style={styles.iconI}
+              ></Image>
+            </View>
+            {/* Section Footer */}
+            <View style={styles.containerFooter}>
+              <Text style={styles.textAccount}>Não tem uma conta?</Text>
+              <Text style={styles.textCreate}> Criar conta</Text>
             </View>
           </View>
         </ScrollView>
@@ -167,5 +189,45 @@ const styles = StyleSheet.create({
     color: "#8e8e93",
     fontSize: 14,
     fontFamily: "Poppins",
+  },
+  containerSocial: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+    padding: 16,
+  },
+  iconG: {
+    width: 50,
+    height: 50,
+    resizeMode: "contain",
+  },
+  iconA: {
+    width: 56,
+    height: 56,
+    resizeMode: "contain",
+  },
+  iconI: {
+    width: 56,
+    height: 56,
+    resizeMode: "contain",
+  },
+  containerFooter: {
+    flexDirection: "row",
+    justifyContent: "center",
+    paddingTop: 30,
+  },
+  textAccount: {
+    fontFamily: "Poppins",
+    textAlign: "center",
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "#000000",
+  },
+  textCreate: {
+    fontFamily: "Poppins",
+    textAlign: "center",
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "#4B338B",
   },
 });
