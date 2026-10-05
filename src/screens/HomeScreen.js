@@ -52,6 +52,28 @@ export default function HomeScreen({ navigation }) {
           placeholderTextColor="#888"
         />
       </View>
+
+      {/* Section image Home */}
+
+      <View style={styles.contHome}>
+        <Image
+          source={require("../../assets/homeImage.png")}
+          style={styles.homeImage}
+        ></Image>
+      </View>
+
+      {/* Section Text what are you looking for? */}
+      <View style={styles.conttSearch}>
+        <Text style={styles.textSearch}>O que você procura?</Text>
+      </View>
+
+      {/* Section container giro / categories */}
+
+      <View style={styles.containerGc}>
+        <View style={styles.giroCoin}></View>
+
+        <View style={styles.categories}></View>
+      </View>
     </SafeAreaView>
   );
 }
@@ -117,5 +139,45 @@ const styles = StyleSheet.create({
     height: "100%",
     fontSize: 14,
     color: "#8E8E93",
+  },
+  contHome: {
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingTop: 25,
+  },
+  homeImage: {
+    width: 400,
+    height: 150,
+    borderRadius: 30,
+    resizeMode: "cover",
+  },
+  conttSearch: {
+    padding: 20,
+  },
+  textSearch: {
+    color: "#000000",
+    fontSize: 15,
+    fontWeight: "bold",
+    fontFamily: "Inter",
+  },
+  containerGc: {
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 10,
+  },
+  giroCoin: {
+    width: 200,
+    height: 80,
+    borderRadius: 20,
+    backgroundColor: "#DCDCDC",
+  },
+  categories: {
+    width: 200,
+    height: 80,
+    borderRadius: 20,
+    backgroundColor: "#DCDCDC",
   },
 });
