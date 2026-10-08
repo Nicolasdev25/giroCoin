@@ -12,160 +12,171 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { TextInput } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import ActionBar from "../components/ActionBar";
 
 export default function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
-      {/* Section Logo */}
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContent}
+      >
+        {/* Section Logo */}
 
-      <View style={styles.containerLogo}>
-        <Image
-          source={require("../../assets/girocoinlogo.png")}
-          style={styles.logo}
-        />
+        <View style={styles.containerLogo}>
+          <Image
+            source={require("../../assets/girocoinlogo.png")}
+            style={styles.logo}
+          />
 
-        <Image
-          source={require("../../assets/notification_Icon.png")}
-          style={styles.notIcon}
-        />
-      </View>
+          <Image
+            source={require("../../assets/notification_Icon.png")}
+            style={styles.notIcon}
+          />
+        </View>
 
-      {/* Section SubTitle*/}
+        {/* Section SubTitle*/}
 
-      <View style={styles.subTitle}>
-        <Text style={styles.textTitle}>Seu Jogo.Seu próximo level</Text>
-        <Text style={styles.textSubTitle}>
-          Encontre o que falta para sua jornada
-        </Text>
-      </View>
+        <View style={styles.subTitle}>
+          <Text style={styles.textTitle}>Seu Jogo.Seu próximo level</Text>
+          <Text style={styles.textSubTitle}>
+            Encontre o que falta para sua jornada
+          </Text>
+        </View>
 
-      {/*Section Search*/}
+        {/*Section Search*/}
 
-      <View style={styles.Barsearch}>
-        <Ionicons
-          name="search"
-          size={20}
-          color="#888"
-          styles={styles.iconSearch}
-        />
+        <View style={styles.Barsearch}>
+          <Ionicons
+            name="search"
+            size={20}
+            color="#888"
+            style={styles.iconSearch}
+          />
 
-        <TextInput
-          style={styles.input}
-          placeholder="Buscar coins, itens ou services"
-          placeholderTextColor="#888"
-        />
-      </View>
+          <TextInput
+            style={styles.input}
+            placeholder="Buscar coins, itens ou services"
+            placeholderTextColor="#888"
+          />
+        </View>
 
-      {/* Section image Home */}
+        {/* Section image Home */}
 
-      <View style={styles.contHome}>
-        <Image
-          source={require("../../assets/homeImage.png")}
-          style={styles.homeImage}
-        ></Image>
-      </View>
+        <View style={styles.contHome}>
+          <Image
+            source={require("../../assets/homeImage.png")}
+            style={styles.homeImage}
+          ></Image>
+        </View>
 
-      {/* Section Text what are you looking for? */}
-      <View style={styles.conttSearch}>
-        <Text style={styles.textSearch}>O que você procura?</Text>
-      </View>
+        {/* Section Text what are you looking for? */}
+        <View style={styles.conttSearch}>
+          <Text style={styles.textSearch}>O que você procura?</Text>
+        </View>
 
-      {/* Section container giro / categories */}
+        {/* Section container giro / categories */}
 
-      <View style={styles.containerGc}>
-        <TouchableOpacity>
-          <View style={styles.giroCoin}>
-            <Image
-              source={require("../../assets/iconCoin.png")}
-              style={styles.icon}
-            ></Image>
-            <Text style={styles.label}>GiroCoin</Text>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity>
-          <View style={styles.containerCat}>
-            <View style={styles.categories}>
+        <View style={styles.containerGc}>
+          <TouchableOpacity>
+            <View style={styles.giroCoin}>
               <Image
-                source={require("../../assets/iconCategorias.png")}
-                style={styles.iconCat}
+                source={require("../../assets/iconCoin.png")}
+                style={styles.icon}
               ></Image>
-              <Text style={styles.label}>Categorias</Text>
+              <Text style={styles.label}>GiroCoin</Text>
             </View>
-          </View>
-        </TouchableOpacity>
-      </View>
-      {/* section text wts */}
-      <View style={styles.containerTxt}>
-        <Text style={styles.chooseTxt}>Escolha sua próxima jogada</Text>
-      </View>
-      {/* Section Choose your next move */}
-      <View style={styles.containerChoose}>
-        <View style={styles.card1}>
-          <View style={styles.bg1}>
-            <Image
-              source={require("../../assets/bau-basico.png")}
-              style={styles.trunkBasic}
-            ></Image>
-            <Text style={styles.cardText}>250 Giro Coins</Text>
-            <Text style={styles.cardSubTxt}>
-              Créditos virtuais na sua Store in game
-            </Text>
-            <View style={styles.containerButton}>
-              <TouchableOpacity style={styles.buttonBuy}>
-                <Text style={styles.btnTxt}>Comprar</Text>
-                <Image
-                  source={require("..//../assets/arrow-right.png")}
-                  style={styles.arrowIcon}
-                ></Image>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
+          </TouchableOpacity>
 
-        <View style={styles.card2}>
-          <View style={styles.bg2}>
-            <Image
-              source={require("../../assets/bau-pequeno.png")}
-              style={styles.trunkSmall}
-            ></Image>
-            <Text style={styles.cardText}>500 Giro Coins</Text>
-            <Text style={styles.cardSubTxt}>
-              Créditos virtuais na sua Store in game
-            </Text>
-            <View style={styles.containerButton}>
-              <TouchableOpacity style={styles.buttonBuy}>
-                <Text style={styles.btnTxt}>Comprar</Text>
+          <TouchableOpacity>
+            <View style={styles.containerCat}>
+              <View style={styles.categories}>
                 <Image
-                  source={require("..//../assets/arrow-right.png")}
-                  style={styles.arrowIcon}
+                  source={require("../../assets/iconCategorias.png")}
+                  style={styles.iconCat}
                 ></Image>
-              </TouchableOpacity>
+                <Text style={styles.label}>Categorias</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+        </View>
+        {/* section text wts */}
+        <View style={styles.containerTxt}>
+          <Text style={styles.chooseTxt}>Escolha sua próxima jogada</Text>
+        </View>
+        {/* Section Choose your next move */}
+        <View style={styles.containerChoose}>
+          <View style={styles.card1}>
+            <View style={styles.bg1}>
+              <Image
+                source={require("../../assets/bau-basico.png")}
+                style={styles.trunkBasic}
+              ></Image>
+              <Text style={styles.cardText}>250 Giro Coins</Text>
+              <Text style={styles.cardSubTxt}>
+                Créditos virtuais na sua Store in game
+              </Text>
+              <View style={styles.containerButton}>
+                <TouchableOpacity style={styles.buttonBuy}>
+                  <Text style={styles.btnTxt}>Comprar</Text>
+                  <Image
+                    source={require("..//../assets/arrow-right.png")}
+                    style={styles.arrowIcon}
+                  ></Image>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
-        </View>
 
-        <View style={styles.card3}>
-          <View style={styles.bg3}>
-            <Image
-              source={require("../../assets/bau-medio.png")}
-              style={styles.trunkAverage}
-            ></Image>
-            <Text style={styles.cardText}>750 Giro Coins</Text>
-            <Text style={styles.cardSubTxt}>
-              Créditos virtuais na sua Store in game
-            </Text>
-            <View style={styles.containerButton}>
-              <TouchableOpacity style={styles.buttonBuy}>
-                <Text style={styles.btnTxt}>Comprar</Text>
-                <Image
-                  source={require("..//../assets/arrow-right.png")}
-                  style={styles.arrowIcon}
-                ></Image>
-              </TouchableOpacity>
+          <View style={styles.card2}>
+            <View style={styles.bg2}>
+              <Image
+                source={require("../../assets/bau-pequeno.png")}
+                style={styles.trunkSmall}
+              ></Image>
+              <Text style={styles.cardText}>500 Giro Coins</Text>
+              <Text style={styles.cardSubTxt}>
+                Créditos virtuais na sua Store in game
+              </Text>
+              <View style={styles.containerButton}>
+                <TouchableOpacity style={styles.buttonBuy}>
+                  <Text style={styles.btnTxt}>Comprar</Text>
+                  <Image
+                    source={require("..//../assets/arrow-right.png")}
+                    style={styles.arrowIcon}
+                  ></Image>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+
+          <View style={styles.card3}>
+            <View style={styles.bg3}>
+              <Image
+                source={require("../../assets/bau-medio.png")}
+                style={styles.trunkAverage}
+              ></Image>
+              <Text style={styles.cardText}>750 Giro Coins</Text>
+              <Text style={styles.cardSubTxt}>
+                Créditos virtuais na sua Store in game
+              </Text>
+              <View style={styles.containerButton}>
+                <TouchableOpacity style={styles.buttonBuy}>
+                  <Text style={styles.btnTxt}>Comprar</Text>
+                  <Image
+                    source={require("..//../assets/arrow-right.png")}
+                    style={styles.arrowIcon}
+                  ></Image>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
         </View>
+      </ScrollView>
+
+      {/* Section Action Bar (fixa no rodapé, fora do ScrollView) */}
+      <View style={styles.actionBarWrap}>
+        <ActionBar />
       </View>
     </SafeAreaView>
   );
@@ -333,7 +344,7 @@ const styles = StyleSheet.create({
   bg1: {
     width: 110,
     height: 90,
-    backgroundColor: "# rgba(226, 193, 94, 0.4)",
+    backgroundColor: "rgba(226, 193, 94, 0.4)",
     borderRadius: 12,
   },
   trunkBasic: {
@@ -345,7 +356,7 @@ const styles = StyleSheet.create({
   bg2: {
     width: 110,
     height: 90,
-    backgroundColor: "# rgba(226, 193, 94, 0.4)",
+    backgroundColor: "rgba(226, 193, 94, 0.4)",
     borderRadius: 12,
   },
   trunkSmall: {
@@ -357,7 +368,7 @@ const styles = StyleSheet.create({
   bg3: {
     width: 110,
     height: 90,
-    backgroundColor: "# rgba(226, 193, 94, 0.4)",
+    backgroundColor: "rgba(226, 193, 94, 0.4)",
     borderRadius: 12,
   },
   trunkAverage: {
@@ -385,12 +396,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     width: 110,
     height: 35,
-    backgroundColor: "#rgba(83, 50, 166, 0.3)",
+    backgroundColor: "rgba(83, 50, 166, 0.3)",
     borderRadius: 20,
   },
   btnTxt: {
     padding: 8,
-    textAlign: "flex-start",
+    textAlign: "left",
     fontWeight: "bold",
     color: "#4B338B",
     fontFamily: "Inter",
@@ -399,5 +410,13 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     width: 30,
     height: 30,
+  },
+  scrollContent: {
+    paddingBottom: 40,
+  },
+  actionBarWrap: {
+    paddingTop: 12,
+    paddingBottom: 8,
+    backgroundColor: "#fff",
   },
 });
