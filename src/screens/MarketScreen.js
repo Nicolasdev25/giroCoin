@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     lineHeight: 34,
     fontWeight: "bold",
-    color: "#000",
+    color: "#fff",
   },
   cadastradasTxt: {
     fontSize: 30,

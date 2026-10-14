@@ -8,28 +8,44 @@ import {
   StyleSheet,
   useWindowDimensions,
 } from "react-native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 // ====== Abas da barra ======
 // icon       = ícone da aba (PNG amarelo)
 // iconActive = (opcional) versão alternativa para quando a aba está ativa.
 // Sem iconActive, o ícone ativo é pintado de roxo automaticamente (tintColor).
+// route      = nome da tela no seu navigator (o mesmo do <Stack.Screen name="...">).
+//              Deixe null nas abas cujas telas ainda não existem.
 const TABS = [
-  { key: "home", label: "Inicio", icon: require("../../assets/home-icon.png") },
+  {
+    key: "home",
+    label: "Inicio",
+    icon: require("../../assets/home-icon.png"),
+    route: "Home", // <- troque se sua tela Home tiver outro nome no navigator
+  },
   {
     key: "categorias",
     label: "Categorias",
     icon: require("../../assets/categories-icon.png"),
+    route: "Categories",
   },
-  { key: "loja", label: "Loja", icon: require("../../assets/shop-icon.png") },
+  {
+    key: "loja",
+    label: "Loja",
+    icon: require("../../assets/shop-icon.png"),
+    route: "Market",
+  },
   {
     key: "carrinho",
     label: "Carrinho",
     icon: require("../../assets/shopping-icon.png"),
+    route: "Cart",
   },
   {
     key: "perfil",
     label: "Perfil",
     icon: require("../../assets/profile-icon.png"),
+    route: null,
   },
 ];
 
@@ -43,9 +59,18 @@ const PILL_H = 50;
 const ICON = 28;
 
 export default function ActionBar({ onChange }) {
+  const navigation = useNavigation();
+  const route = useRoute();
   const { width: screenWidth } = useWindowDimensions();
-  const [index, setIndex] = useState(0);
-  const progress = useRef(new Animated.Value(0)).current; // 0..4, posição da pílula
+
+  // Como cada tela tem sua própria ActionBar, a aba ativa começa
+  // na aba que corresponde à tela atual (e não sempre no "Inicio")
+  const initialIndex = Math.max(
+    0,
+    TABS.findIndex((t) => t.route === route.name),
+  );
+  const [index, setIndex] = useState(initialIndex);
+  const progress = useRef(new Animated.Value(initialIndex)).current; // 0..4, posição da pílula
 
   // A barra ocupa a tela toda, menos a margem lateral
   const barWidth = screenWidth - SIDE_MARGIN * 2;
@@ -61,6 +86,12 @@ export default function ActionBar({ onChange }) {
       tension: 70,
       useNativeDriver: false, // animamos largura/left, então não dá pra usar o driver nativo
     }).start();
+
+    // Vai para a tela da aba (se ela já existir e não for a tela atual)
+    const target = TABS[i].route;
+    if (target && target !== route.name) {
+      navigation.navigate(target);
+    }
   };
 
   // A pílula anda INACTIVE_W por aba (as abas antes dela são todas "pequenas")
