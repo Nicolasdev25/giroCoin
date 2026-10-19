@@ -27,7 +27,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Login"
+        initialRouteName="dataCheck"
         screenOptions={{
           headerShown: false, // Esconde o cabeçalho padrão superior da navegação
         }}
