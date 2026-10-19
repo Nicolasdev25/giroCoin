@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import {
   StyleSheet,
   View,
+  Image,
   ScrollView,
   Text,
   TouchableOpacity,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
+import ActionBar from "../components/ActionBar";
 
 const PADDING = 20; // margem lateral única para toda a tela
 const PURPLE = "#4B318B";
@@ -58,20 +60,24 @@ export default function CheckoutScreen({ navigation }) {
             <Text style={styles.productPrice}>{formatPrice(UNIT_PRICE)}</Text>
           </View>
 
-          {/* IMAGEM DAS MOEDAS: troque esta View por
-              <Image source={require("../../assets/SUA_IMAGEM.png")} style={styles.coinsImage} /> */}
-          <View style={styles.coinsImage} />
+          <Image
+            source={require("../../assets/imagemCoinG.png")}
+            style={styles.coinsImage}
+            resizeMode="contain"
+          />
         </View>
 
         {/* Card da loja */}
         <View style={[styles.section, styles.cardWrap]}>
           <View style={[styles.card, styles.storeCard]}>
-            {/* IMAGEM DA LOJA: troque por <Image ... style={styles.storeImage} /> */}
-            <View style={styles.storeImage} />
+            {/* A imagem já traz o nome e "Sua loja oficial"; a nota fica por cima, alinhada ao texto */}
+            <View style={styles.storeImageWrap}>
+              <Image
+                source={require("../../assets/giroCoinStoreIcon.png")}
+                style={styles.storeImage}
+                resizeMode="contain"
+              />
 
-            <View style={styles.storeInfo}>
-              <Text style={styles.storeName}>GiroCoin Store</Text>
-              <Text style={styles.storeSubtitle}>Sua loja oficial</Text>
               <View style={styles.ratingRow}>
                 <Ionicons name="star" size={16} color="#F5B301" />
                 <Text style={styles.ratingValue}>4,9</Text>
@@ -116,8 +122,11 @@ export default function CheckoutScreen({ navigation }) {
         <View style={[styles.section, styles.cardWrap]}>
           <View style={[styles.card, styles.deliveryCard]}>
             <View style={styles.deliveryTop}>
-              {/* ÍCONE DE ENTREGA: troque por <Image ... style={styles.deliveryIcon} /> */}
-              <View style={styles.deliveryIcon} />
+              <Image
+                source={require("../../assets/carPayIcon.png")}
+                style={styles.deliveryIcon}
+                resizeMode="contain"
+              />
 
               <View style={styles.deliveryInfo}>
                 <Text style={styles.deliveryTitle}>Super Entrega</Text>
@@ -198,12 +207,15 @@ export default function CheckoutScreen({ navigation }) {
         <TouchableOpacity
           style={styles.payButton}
           activeOpacity={0.85}
-          onPress={() => {
-            // navigation.navigate("NomeDaTelaDePagamento");
-          }}
+          onPress={() => navigation.navigate("PayScreen", { quantity })}
         >
           <Text style={styles.payButtonText}>Ir para pagamento</Text>
         </TouchableOpacity>
+      </View>
+
+      {/* Action Bar fixa no rodapé, abaixo do botão */}
+      <View style={styles.actionBarWrap}>
+        <ActionBar />
       </View>
     </SafeAreaView>
   );
@@ -267,11 +279,8 @@ const styles = StyleSheet.create({
     color: PURPLE,
   },
   coinsImage: {
-    width: 150,
-    height: 100,
-    // some com a cor quando você colocar a imagem
-    backgroundColor: "rgba(75, 49, 139, 0.08)",
-    borderRadius: 12,
+    width: 165,
+    aspectRatio: 450 / 260,
   },
 
   // Cards (base)
@@ -285,33 +294,25 @@ const styles = StyleSheet.create({
 
   // Loja
   storeCard: {
-    flexDirection: "row",
-    alignItems: "center",
     backgroundColor: CARD_STORE,
+    paddingVertical: 10,
+    alignItems: "flex-start",
+  },
+  storeImageWrap: {
+    height: 95,
+    aspectRatio: 540 / 200, // proporção da imagem da loja
   },
   storeImage: {
-    width: 100,
-    height: 80,
-    backgroundColor: "rgba(75, 49, 139, 0.12)",
-    borderRadius: 10,
+    width: "100%",
+    height: "100%",
   },
-  storeInfo: {
-    flex: 1,
-    marginLeft: 12,
-  },
-  storeName: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: PURPLE,
-  },
-  storeSubtitle: {
-    fontSize: 12,
-    color: "#000",
-  },
+  // nota posicionada logo abaixo do texto "Sua loja oficial" da imagem
   ratingRow: {
+    position: "absolute",
+    left: "44%",
+    top: "76%",
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 4,
     gap: 4,
   },
   ratingValue: {
@@ -385,8 +386,6 @@ const styles = StyleSheet.create({
   deliveryIcon: {
     width: 44,
     height: 44,
-    backgroundColor: "rgba(75, 49, 139, 0.12)",
-    borderRadius: 10,
   },
   deliveryInfo: {
     flex: 1,
@@ -466,7 +465,7 @@ const styles = StyleSheet.create({
   footer: {
     paddingHorizontal: PADDING,
     paddingTop: 12,
-    paddingBottom: 12,
+    paddingBottom: 4,
     backgroundColor: "#fff",
   },
   payButton: {
@@ -480,5 +479,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     color: "#fff",
+  },
+
+  // Action bar
+  actionBarWrap: {
+    paddingTop: 8,
+    paddingBottom: 8,
+    backgroundColor: "#fff",
   },
 });

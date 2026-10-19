@@ -58,16 +58,20 @@ const ACTIVE_W = 140; // largura da aba ativa (a pílula)
 const PILL_H = 50;
 const ICON = 28;
 
-export default function ActionBar({ onChange }) {
+export default function ActionBar({ onChange, activeKey }) {
   const navigation = useNavigation();
   const route = useRoute();
   const { width: screenWidth } = useWindowDimensions();
 
   // Como cada tela tem sua própria ActionBar, a aba ativa começa
   // na aba que corresponde à tela atual (e não sempre no "Inicio")
+  // activeKey (opcional) força a aba ativa em telas que não são uma aba,
+  // por exemplo <ActionBar activeKey="carrinho" /> na tela de pagamento
   const initialIndex = Math.max(
     0,
-    TABS.findIndex((t) => t.route === route.name),
+    TABS.findIndex((t) =>
+      activeKey ? t.key === activeKey : t.route === route.name,
+    ),
   );
   const [index, setIndex] = useState(initialIndex);
   const progress = useRef(new Animated.Value(initialIndex)).current; // 0..4, posição da pílula

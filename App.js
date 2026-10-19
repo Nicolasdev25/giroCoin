@@ -16,6 +16,10 @@ import PaymentsScreen from "./src/screens/PaymentsScreen";
 import PersonalDataScreen from "./src/screens/PersonalDataScreen";
 import PrivacyScreen from "./src/screens/PrivacyScreen";
 import VerifyIdentityScreen from "./src/screens/VerifyIdentityScreen";
+import PayScreen from "./src/screens/PayScreen";
+import PixScreen from "./src/screens/PixScreen";
+import ApprovedScreen from "./src/screens/ApprovedScreen";
+import ReviewScreen from "./src/screens/ReviewScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,7 +27,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="creatAcc"
+        initialRouteName="Cart"
         screenOptions={{
           headerShown: false, // Esconde o cabeçalho padrão superior da navegação
         }}
@@ -43,6 +47,10 @@ export default function App() {
         <Stack.Screen name="personalData" component={PersonalDataScreen} />
         <Stack.Screen name="privacy" component={PrivacyScreen} />
         <Stack.Screen name="verifyIden" component={VerifyIdentityScreen} />
+        <Stack.Screen name="PayScreen" component={PayScreen} />
+        <Stack.Screen name="PixScreen" component={PixScreen} />
+        <Stack.Screen name="ApprovedScreen" component={ApprovedScreen} />
+        <Stack.Screen name="ReviewScreen" component={ReviewScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
