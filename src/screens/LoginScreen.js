@@ -14,16 +14,18 @@ import {
 } from "react-native";
 import * as Iconsax from "iconsax-react-nativejs";
 
-export default function LoginScreen() {
+// ALTERAÇÃO 1: a tela agora recebe { navigation }
+export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // ALTERAÇÃO 2: depois de preencher e-mail e senha, vai para a Home
   const handleLogin = () => {
-    if (!email || !password) {
+    if (!email.trim() || !password) {
       Alert.alert("Atenção", "Por favor, preencha todos os campos.");
       return;
     }
-    Alert.alert("Sucesso", `Login efetuado para: ${email}`);
+    navigation.replace("Home");
   };
 
   return (

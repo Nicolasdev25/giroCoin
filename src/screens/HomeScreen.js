@@ -14,12 +14,15 @@ import { Ionicons } from "@expo/vector-icons";
 import ActionBar from "../components/ActionBar";
 
 // Dados dos cards: evita repetir o mesmo bloco 3 vezes
+// screen = nome da tela (no navigator) para onde o botão "Comprar" leva.
+// Os cards sem screen ainda não navegam para lugar nenhum.
 const CARDS = [
   {
     id: "coins-250",
     image: require("../../assets/bau-basico.png"),
     title: "250 Giro Coins",
     description: "Créditos virtuais na sua Store in game",
+    screen: "Cart",
   },
   {
     id: "coins-500",
@@ -149,7 +152,13 @@ export default function HomeScreen({ navigation }) {
                 </Text>
               </View>
 
-              <TouchableOpacity style={styles.buttonBuy} activeOpacity={0.8}>
+              <TouchableOpacity
+                style={styles.buttonBuy}
+                activeOpacity={0.8}
+                onPress={() => {
+                  if (card.screen) navigation.navigate(card.screen);
+                }}
+              >
                 <Text style={styles.btnTxt}>Comprar</Text>
                 <Image
                   source={require("../../assets/arrow-right.png")}
