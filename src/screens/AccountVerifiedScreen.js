@@ -11,7 +11,6 @@ import {
 import { Feather } from "@expo/vector-icons";
 
 export default function AccountVerifiedScreen({ navigation }) {
-  // Componente reutilizável para os cartões de benefício
   const BenefitCard = ({ title, description, icon }) => (
     <View style={styles.benefitCard}>
       <View style={styles.iconContainer}>

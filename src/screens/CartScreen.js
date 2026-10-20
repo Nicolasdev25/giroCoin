@@ -70,7 +70,6 @@ export default function CheckoutScreen({ navigation }) {
         {/* Card da loja */}
         <View style={[styles.section, styles.cardWrap]}>
           <View style={[styles.card, styles.storeCard]}>
-            {/* A imagem já traz o nome e "Sua loja oficial"; a nota fica por cima, alinhada ao texto */}
             <View style={styles.storeImageWrap}>
               <Image
                 source={require("../../assets/giroCoinStoreIcon.png")}

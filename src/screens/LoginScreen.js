@@ -14,12 +14,11 @@ import {
 } from "react-native";
 import * as Iconsax from "iconsax-react-nativejs";
 
-// ALTERAÇÃO 1: a tela agora recebe { navigation }
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // ALTERAÇÃO 2: depois de preencher e-mail e senha, vai para a Home
+  // leva a home
   const handleLogin = () => {
     if (!email.trim() || !password) {
       Alert.alert("Atenção", "Por favor, preencha todos os campos.");
@@ -85,6 +84,7 @@ export default function LoginScreen({ navigation }) {
                 <Text style={styles.fPass}>Esqueci minha senha</Text>
               </View>
             </TouchableOpacity>
+
             <TouchableOpacity style={styles.button} onPress={handleLogin}>
               <Text style={styles.buttonText}>Entrar </Text>
               <Iconsax.ArrowRight size={28} color="#f9f9f9" variant="Linear" />
@@ -97,18 +97,24 @@ export default function LoginScreen({ navigation }) {
             </View>
             {/* Section Social */}
             <View style={styles.containerSocial}>
-              <Image
-                source={require("../../assets/googleIcon.png")}
-                style={styles.iconG}
-              ></Image>
-              <Image
-                source={require("../../assets/appleIcon.png")}
-                style={styles.iconA}
-              ></Image>
-              <Image
-                source={require("../../assets/instaIcon.png")}
-                style={styles.iconI}
-              ></Image>
+              <TouchableOpacity>
+                <Image
+                  source={require("../../assets/googleIcon.png")}
+                  style={styles.iconG}
+                ></Image>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                  source={require("../../assets/appleIcon.png")}
+                  style={styles.iconA}
+                ></Image>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                  source={require("../../assets/instaIcon.png")}
+                  style={styles.iconI}
+                ></Image>
+              </TouchableOpacity>
             </View>
             {/* Section Footer */}
             <View style={styles.containerFooter}>

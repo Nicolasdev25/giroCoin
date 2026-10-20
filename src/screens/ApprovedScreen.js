@@ -19,15 +19,12 @@ const CARD_INNER = "#E6E2F2"; // card interno claro
 const PACK_SIZE = 250;
 const UNIT_PRICE = 48.25;
 
-// Dado de exemplo: troque pelo usuário real da sua API
 const GAME_USER = "João Pekeno";
 
 const pad = (n) => String(n).padStart(2, "0");
 
-// 48.25 -> "R$ 48,25"
 const formatPrice = (value) => `R$ ${value.toFixed(2).replace(".", ",")}`;
 
-// Date -> "15:05"
 const formatTime = (date) =>
   `${pad(date.getHours())}:${pad(date.getMinutes())}`;
 
@@ -42,7 +39,6 @@ export default function ApprovedScreen({ navigation, route }) {
   // Horário da confirmação = momento em que a tela abre (exemplo)
   const [confirmedAt] = useState(() => new Date());
 
-  // Linha do tempo (horários de exemplo: troque pelos reais da sua API)
   const steps = [
     {
       id: "approved",
