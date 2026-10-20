@@ -51,7 +51,7 @@ export default function CheckingDataScreen({ navigation }) {
         {/* Botão de Ação Primária */}
         <TouchableOpacity
           style={styles.yellowButton}
-          onPress={() => navigation.navigate("AccountVerifiedScreen")} // O botão leva o utilizador de volta à Home/Dashboard
+          onPress={() => navigation.navigate("AccVerify")} // O botão leva o utilizador de volta à Home/Dashboard
         >
           <Text style={styles.yellowButtonText}>Acompanhar Verificação</Text>
           <Feather name="arrow-right" size={20} color="#57419D" />

@@ -80,9 +80,11 @@ export default function LoginScreen({ navigation }) {
               onChangeText={setPassword}
             />
             {/* Login Button */}
-            <View style={styles.forgPass}>
-              <Text style={styles.fPass}>Esqueci minha senha</Text>
-            </View>
+            <TouchableOpacity>
+              <View style={styles.forgPass}>
+                <Text style={styles.fPass}>Esqueci minha senha</Text>
+              </View>
+            </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={handleLogin}>
               <Text style={styles.buttonText}>Entrar </Text>
               <Iconsax.ArrowRight size={28} color="#f9f9f9" variant="Linear" />
@@ -111,7 +113,13 @@ export default function LoginScreen({ navigation }) {
             {/* Section Footer */}
             <View style={styles.containerFooter}>
               <Text style={styles.textAccount}>Não tem uma conta?</Text>
-              <Text style={styles.textCreate}> Criar conta</Text>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                hitSlop={{ top: 10, bottom: 10, left: 6, right: 10 }}
+                onPress={() => navigation.navigate("creatAcc")}
+              >
+                <Text style={styles.textCreate}> Criar conta</Text>
+              </TouchableOpacity>
             </View>
           </View>
         </ScrollView>

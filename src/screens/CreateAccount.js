@@ -150,7 +150,7 @@ export default function CreateAccountScreen({ navigation }) {
         {/* Botão Principal com navegação corrigida */}
         <TouchableOpacity
           style={styles.primaryButton}
-          onPress={() => navigation.navigate("ConfirmDataScreen")}
+          onPress={() => navigation.navigate("dataConfirm")}
         >
           <Text style={styles.primaryButtonText}>Continuar</Text>
           <Feather name="arrow-right" size={20} color="#FFF" />

@@ -134,7 +134,7 @@ export default function VerifyIdentityScreen({ navigation }) {
         {/* Botão de Ação Primária */}
         <TouchableOpacity
           style={styles.yellowButton}
-          onPress={() => navigation.navigate("CheckingDataScreen")}
+          onPress={() => navigation.navigate("dataCheck")}
         >
           <Text style={styles.yellowButtonText}>Iniciar Verificação</Text>
           <Feather name="arrow-right" size={20} color="#57419D" />

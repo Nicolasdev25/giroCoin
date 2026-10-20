@@ -111,7 +111,7 @@ export default function ConfirmDetails({ navigation }) {
         {/* Botão Principal com navegação corrigida */}
         <TouchableOpacity
           style={styles.primaryButton}
-          onPress={() => navigation.navigate("VerifyIdentityScreen")}
+          onPress={() => navigation.navigate("verifyIden")}
         >
           <Text style={styles.primaryButtonText}>Confirmar código</Text>
           <Feather name="arrow-right" size={20} color="#FFF" />

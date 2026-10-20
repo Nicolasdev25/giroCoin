@@ -45,7 +45,7 @@ const TABS = [
     key: "perfil",
     label: "Perfil",
     icon: require("../../assets/profile-icon.png"),
-    route: null,
+    route: "Profile",
   },
 ];
 

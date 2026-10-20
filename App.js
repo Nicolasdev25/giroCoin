@@ -20,6 +20,7 @@ import PayScreen from "./src/screens/PayScreen";
 import PixScreen from "./src/screens/PixScreen";
 import ApprovedScreen from "./src/screens/ApprovedScreen";
 import ReviewScreen from "./src/screens/ReviewScreen";
+import ProfileScreen from "./src/screens/ProfileScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,7 +28,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="dataCheck"
+        initialRouteName="Profile"
         screenOptions={{
           headerShown: false, // Esconde o cabeçalho padrão superior da navegação
         }}
@@ -51,6 +52,7 @@ export default function App() {
         <Stack.Screen name="PixScreen" component={PixScreen} />
         <Stack.Screen name="ApprovedScreen" component={ApprovedScreen} />
         <Stack.Screen name="ReviewScreen" component={ReviewScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
