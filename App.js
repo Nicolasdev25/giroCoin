@@ -23,6 +23,7 @@ import ReviewScreen from "./src/screens/ReviewScreen";
 import ProfileScreen from "./src/screens/ProfileScreen";
 import ForgotPasswordScreen from "./src/screens/ForgotPasswordScreen";
 import PasswordRecoveredScreen from "./src/screens/PasswordRecoveredScreen";
+import SplashScreen from "./src/screens/SplashScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -30,11 +31,12 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Login"
+        initialRouteName="Splash"
         screenOptions={{
           headerShown: false, // Esconde o cabeçalho padrão superior da navegação
         }}
       >
+        <Stack.Screen name="Splash" component={SplashScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Categories" component={CategoriesScreen} />
