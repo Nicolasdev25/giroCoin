@@ -14,12 +14,11 @@ import {
 } from "react-native";
 import * as Iconsax from "iconsax-react-nativejs";
 
-// ALTERAÇÃO 1: a tela agora recebe { navigation }
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // ALTERAÇÃO 2: depois de preencher e-mail e senha, vai para a Home
+  // Valida os campos e navega para a Home
   const handleLogin = () => {
     if (!email.trim() || !password) {
       Alert.alert("Atenção", "Por favor, preencha todos os campos.");
@@ -46,6 +45,7 @@ export default function LoginScreen({ navigation }) {
               style={styles.logo}
             />
           </View>
+
           {/* Section Home */}
           <View style={styles.header}>
             <Image
@@ -60,6 +60,7 @@ export default function LoginScreen({ navigation }) {
               Encontre o que faltava para sua jornada.
             </Text>
           </View>
+
           {/* Section Login */}
           <View style={styles.form}>
             <TextInput
@@ -79,44 +80,52 @@ export default function LoginScreen({ navigation }) {
               value={password}
               onChangeText={setPassword}
             />
-            {/* Login Button */}
-            <TouchableOpacity>
-              <View style={styles.forgPass}>
-                <Text style={styles.fPass}>Esqueci minha senha</Text>
-              </View>
+
+            {/* Rota para Esqueci Minha Senha corrigida */}
+            <TouchableOpacity
+              style={styles.forgPass}
+              activeOpacity={0.7}
+              onPress={() => navigation.navigate("ForgotPasswordScreen")}
+            >
+              <Text style={styles.fPass}>Esqueci minha senha</Text>
             </TouchableOpacity>
+
+            {/* Login Button */}
             <TouchableOpacity style={styles.button} onPress={handleLogin}>
               <Text style={styles.buttonText}>Entrar </Text>
               <Iconsax.ArrowRight size={28} color="#f9f9f9" variant="Linear" />
             </TouchableOpacity>
+
             {/* Line Divider */}
             <View style={styles.divider}>
               <View style={styles.line} />
               <Text style={styles.dividerText}>Ou</Text>
               <View style={styles.line} />
             </View>
+
             {/* Section Social */}
             <View style={styles.containerSocial}>
               <Image
                 source={require("../../assets/googleIcon.png")}
                 style={styles.iconG}
-              ></Image>
+              />
               <Image
                 source={require("../../assets/appleIcon.png")}
                 style={styles.iconA}
-              ></Image>
+              />
               <Image
                 source={require("../../assets/instaIcon.png")}
                 style={styles.iconI}
-              ></Image>
+              />
             </View>
+
             {/* Section Footer */}
             <View style={styles.containerFooter}>
               <Text style={styles.textAccount}>Não tem uma conta?</Text>
               <TouchableOpacity
                 activeOpacity={0.7}
                 hitSlop={{ top: 10, bottom: 10, left: 6, right: 10 }}
-                onPress={() => navigation.navigate("creatAcc")}
+                onPress={() => navigation.navigate("CreateAccount")}
               >
                 <Text style={styles.textCreate}> Criar conta</Text>
               </TouchableOpacity>
@@ -167,7 +176,10 @@ const styles = StyleSheet.create({
     borderColor: "rgba(0, 0, 0, 0.8)",
     fontFamily: "Poppins",
   },
-  forgPass: { alignItems: "flex-end" },
+  forgPass: {
+    alignSelf: "flex-end",
+    marginBottom: 8,
+  },
   fPass: {
     color: "#4B338B",
     fontSize: 13,
