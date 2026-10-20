@@ -14,6 +14,9 @@ import {
 } from "react-native";
 import * as Iconsax from "iconsax-react-nativejs";
 
+// O e-mail precisa ter algo antes e depois do @ (ex.: nome@email.com)
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+$/;
+
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,6 +27,16 @@ export default function LoginScreen({ navigation }) {
       Alert.alert("Atenção", "Por favor, preencha todos os campos.");
       return;
     }
+
+    // não aceita e-mail sem @
+    if (!EMAIL_REGEX.test(email.trim())) {
+      Alert.alert(
+        "E-mail inválido",
+        "Digite um e-mail válido, com @ (ex.: nome@email.com).",
+      );
+      return;
+    }
+
     navigation.replace("Home");
   };
 
