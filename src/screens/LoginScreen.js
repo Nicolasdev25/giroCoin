@@ -45,6 +45,7 @@ export default function LoginScreen({ navigation }) {
               style={styles.logo}
             />
           </View>
+
           {/* Section Home */}
           <View style={styles.header}>
             <Image
@@ -59,6 +60,7 @@ export default function LoginScreen({ navigation }) {
               Encontre o que faltava para sua jornada.
             </Text>
           </View>
+
           {/* Section Login */}
           <View style={styles.form}>
             <TextInput
@@ -78,23 +80,28 @@ export default function LoginScreen({ navigation }) {
               value={password}
               onChangeText={setPassword}
             />
-            {/* Login Button */}
-            <TouchableOpacity>
-              <View style={styles.forgPass}>
-                <Text style={styles.fPass}>Esqueci minha senha</Text>
-              </View>
+
+            {/* Rota para Esqueci Minha Senha corrigida */}
+            <TouchableOpacity
+              style={styles.forgPass}
+              activeOpacity={0.7}
+              onPress={() => navigation.navigate("ForgotPasswordScreen")}
+            >
+              <Text style={styles.fPass}>Esqueci minha senha</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.button} onPress={handleLogin}>
               <Text style={styles.buttonText}>Entrar </Text>
               <Iconsax.ArrowRight size={28} color="#f9f9f9" variant="Linear" />
             </TouchableOpacity>
+
             {/* Line Divider */}
             <View style={styles.divider}>
               <View style={styles.line} />
               <Text style={styles.dividerText}>Ou</Text>
               <View style={styles.line} />
             </View>
+
             {/* Section Social */}
             <View style={styles.containerSocial}>
               <TouchableOpacity>
@@ -116,13 +123,14 @@ export default function LoginScreen({ navigation }) {
                 ></Image>
               </TouchableOpacity>
             </View>
+
             {/* Section Footer */}
             <View style={styles.containerFooter}>
               <Text style={styles.textAccount}>Não tem uma conta?</Text>
               <TouchableOpacity
                 activeOpacity={0.7}
                 hitSlop={{ top: 10, bottom: 10, left: 6, right: 10 }}
-                onPress={() => navigation.navigate("creatAcc")}
+                onPress={() => navigation.navigate("CreateAccount")}
               >
                 <Text style={styles.textCreate}> Criar conta</Text>
               </TouchableOpacity>
@@ -173,7 +181,10 @@ const styles = StyleSheet.create({
     borderColor: "rgba(0, 0, 0, 0.8)",
     fontFamily: "Poppins",
   },
-  forgPass: { alignItems: "flex-end" },
+  forgPass: {
+    alignSelf: "flex-end",
+    marginBottom: 8,
+  },
   fPass: {
     color: "#4B338B",
     fontSize: 13,

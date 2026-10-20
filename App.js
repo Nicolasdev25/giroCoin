@@ -21,6 +21,8 @@ import PixScreen from "./src/screens/PixScreen";
 import ApprovedScreen from "./src/screens/ApprovedScreen";
 import ReviewScreen from "./src/screens/ReviewScreen";
 import ProfileScreen from "./src/screens/ProfileScreen";
+import ForgotPasswordScreen from "./src/screens/ForgotPasswordScreen";
+import PasswordRecoveredScreen from "./src/screens/PasswordRecoveredScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -53,6 +55,14 @@ export default function App() {
         <Stack.Screen name="ApprovedScreen" component={ApprovedScreen} />
         <Stack.Screen name="ReviewScreen" component={ReviewScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen
+          name="ForgotPasswordScreen"
+          component={ForgotPasswordScreen}
+        />
+        <Stack.Screen
+          name="PasswordRecoveredScreen"
+          component={PasswordRecoveredScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
