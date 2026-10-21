@@ -158,8 +158,6 @@ export default function PixScreen({ navigation, route }) {
         {/* Pix */}
         <View style={[styles.section, styles.cardWrap]}>
           <View style={[styles.card, styles.pixCard]}>
-            {/* QR CODE: troque esta View pelo QR real
-                (ex.: react-native-qrcode-svg com o código Pix) */}
             <View style={styles.qrBox}>
               <Ionicons name="qr-code-outline" size={84} color="#8B7FB8" />
               <Text style={styles.qrLabel}>QR DEMONSTRATIVO</Text>
@@ -222,8 +220,6 @@ export default function PixScreen({ navigation, route }) {
             style={styles.checkButton}
             activeOpacity={0.8}
             onPress={() => {
-              // Por enquanto vai direto para "aprovado".
-              // Depois: consulte o status na sua API e só navegue se estiver pago.
               navigation.navigate("ApprovedScreen", { quantity, total });
             }}
           >

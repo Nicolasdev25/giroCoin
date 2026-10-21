@@ -1,251 +1,137 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   StyleSheet,
+  Text,
   View,
   ScrollView,
-  Text,
   TouchableOpacity,
+  Image,
+  SafeAreaView,
+  StatusBar,
+  Alert,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { Ionicons } from "@expo/vector-icons";
+
 import ActionBar from "../components/ActionBar";
 
-const PADDING = 20; // margem lateral única para toda a tela
-const PURPLE = "#4B318B";
-const CARD_UNREAD = "#D3CDE6"; // notificação não lida
-const CARD_READ = "#F0EDF8"; // notificação lida
-const GOLD = "#E5A416";
+export default function NotificationScreen({ navigation }) {
+  const handleInicioPress = () => {
+    console.log("Botão Início pressionado!");
 
-// Filtros (chips) do topo
-const FILTERS = [
-  { id: "all", label: "Todas" },
-  { id: "orders", label: "Pedidos" },
-  { id: "promos", label: "Promoções" },
-];
-
-// Aparência de cada tipo de notificação
-const TYPE_STYLE = {
-  orders: { icon: "checkmark-circle", color: "#2FB457", bg: "#CBEED5" },
-  delivery: { icon: "cube", color: PURPLE, bg: "#CFC8E8" },
-  promos: { icon: "pricetag", color: GOLD, bg: "#FBE9B7" },
-  system: { icon: "notifications", color: PURPLE, bg: "#CFC8E8" },
-};
-
-// Notificações de exemplo: troque pelos dados reais da sua API.
-// category = em qual filtro aparece | type = ícone e cor.
-const INITIAL_NOTIFICATIONS = [
-  {
-    id: "n1",
-    category: "orders",
-    type: "orders",
-    title: "Pagamento aprovado",
-    text: "Seu pedido de 250 Giro Coins foi confirmado.",
-    time: "Há 5 min",
-    unread: true,
-  },
-  {
-    id: "n2",
-    category: "orders",
-    type: "delivery",
-    title: "Pedido entregue",
-    text: "Seus Giro Coins já estão na sua conta do jogo.",
-    time: "Há 1 h",
-    unread: true,
-  },
-  {
-    id: "n3",
-    category: "promos",
-    type: "promos",
-    title: "Cupom de desconto",
-    text: "Use 1COMPRA10% e ganhe 10% de desconto na sua compra.",
-    time: "Hoje, 09:30",
-    unread: true,
-  },
-  {
-    id: "n4",
-    category: "orders",
-    type: "orders",
-    title: "Avalie sua compra",
-    text: "Conte como foi sua experiência com a GiroCoin Store.",
-    time: "Ontem",
-    unread: false,
-  },
-  {
-    id: "n5",
-    category: "promos",
-    type: "promos",
-    title: "Giro Coins em promoção",
-    text: "Pacotes de Giro Coins com preço especial por tempo limitado.",
-    time: "Ontem",
-    unread: false,
-  },
-  {
-    id: "n6",
-    category: "system",
-    type: "system",
-    title: "Bem-vindo à GiroCoin",
-    text: "Seu jogo. Seu próximo level. Explore as lojas e comece a jogar.",
-    time: "Esta semana",
-    unread: false,
-  },
-];
-
-export default function NotificationCenterScreen({ navigation }) {
-  const [filter, setFilter] = useState("all");
-  const [notifications, setNotifications] = useState(INITIAL_NOTIFICATIONS);
-
-  const unreadCount = notifications.filter((n) => n.unread).length;
-
-  const visible =
-    filter === "all"
-      ? notifications
-      : notifications.filter((n) => n.category === filter);
-
-  const markAsRead = (id) =>
-    setNotifications((list) =>
-      list.map((n) => (n.id === id ? { ...n, unread: false } : n)),
-    );
-
-  const markAllAsRead = () =>
-    setNotifications((list) => list.map((n) => ({ ...n, unread: false })));
+    Alert.alert("Início", "A redirecionar para a página inicial...");
+  };
 
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
+
       <ScrollView
-        showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}
       >
-        {/* Botão voltar */}
-        <View style={[styles.section, styles.backWrap]}>
-          <TouchableOpacity
-            style={styles.backButton}
-            activeOpacity={0.7}
-            hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
-            onPress={() =>
-              navigation.canGoBack()
-                ? navigation.goBack()
-                : navigation.navigate("Home")
-            }
-          >
-            <Ionicons name="chevron-back" size={18} color={PURPLE} />
-          </TouchableOpacity>
+        {/* Título Principal */}
+        <View style={styles.headerContainer}>
+          <Text style={styles.headerTitle}>Notificações do dia</Text>
+          <View style={styles.headerUnderline} />
         </View>
 
-        {/* Título */}
-        <View style={[styles.section, styles.titleWrap]}>
-          <Text style={styles.title}>Notificações</Text>
-          <Text style={styles.subtitle}>
-            {unreadCount > 0
-              ? `Você tem ${unreadCount} ${
-                  unreadCount === 1 ? "nova notificação" : "novas notificações"
-                }`
-              : "Você está em dia com tudo"}
-          </Text>
+        {/* Seção: Hoje */}
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>Hoje</Text>
+          <Text style={styles.badgeText}>3 novas</Text>
         </View>
 
-        {/* Filtros + marcar todas */}
-        <View style={[styles.section, styles.filtersRow]}>
-          <View style={styles.chips}>
-            {FILTERS.map((item) => {
-              const selected = filter === item.id;
-
-              return (
-                <TouchableOpacity
-                  key={item.id}
-                  style={[styles.chip, selected && styles.chipSelected]}
-                  activeOpacity={0.8}
-                  onPress={() => setFilter(item.id)}
-                >
-                  <Text
-                    style={[
-                      styles.chipText,
-                      selected && styles.chipTextSelected,
-                    ]}
-                  >
-                    {item.label}
-                  </Text>
-                </TouchableOpacity>
-              );
-            })}
+        {/* Card 1 - Pagamento Aprovado */}
+        <View style={styles.cardFilled}>
+          <View style={styles.iconContainer}>
+            <Image
+              source={require("../../assets/imagemCoinG.png")}
+              style={styles.cardImage}
+              resizeMode="contain"
+            />
+          </View>
+          <View style={styles.cardContent}>
+            <Text style={styles.cardTitle}>Pagamento aprovado</Text>
+            <Text style={styles.cardDescription}>
+              Seu pedido #GC012312 de 250GC está aguardando entrega
+            </Text>
+            <Text style={styles.cardTime}>Há 2 min</Text>
           </View>
         </View>
 
-        <View style={[styles.section, styles.markAllWrap]}>
-          <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={markAllAsRead}
-            disabled={unreadCount === 0}
-          >
-            <Text
-              style={[
-                styles.markAllText,
-                unreadCount === 0 && styles.markAllDisabled,
-              ]}
-            >
-              Marcar todas como lidas
+        {/* Card 2 - Nova Mensagem */}
+        <View style={styles.cardFilled}>
+          <View style={styles.iconContainer}>
+            <Image
+              source={require("../../assets/minhaloja.png")}
+              style={styles.cardImage}
+              resizeMode="contain"
+            />
+          </View>
+          <View style={styles.cardContent}>
+            <Text style={styles.cardTitle}>Nova mensagem da loja</Text>
+            <Text style={styles.cardDescription}>
+              GiroCoin Store: Estamos conferindo os dados do seu pedido.
             </Text>
-          </TouchableOpacity>
+            <Text style={styles.cardTime}>Há 21 min</Text>
+          </View>
         </View>
 
-        {/* Lista */}
-        <View style={[styles.section, styles.list]}>
-          {visible.length === 0 ? (
-            <View style={styles.empty}>
-              <Ionicons
-                name="notifications-off-outline"
-                size={48}
-                color="#9A93B5"
-              />
-              <Text style={styles.emptyTitle}>
-                Nenhuma notificação por aqui
-              </Text>
-              <Text style={styles.emptyText}>
-                Quando houver novidades, elas aparecem nesta tela.
-              </Text>
-            </View>
-          ) : (
-            visible.map((item) => {
-              const look = TYPE_STYLE[item.type] ?? TYPE_STYLE.system;
-
-              return (
-                <TouchableOpacity
-                  key={item.id}
-                  style={[
-                    styles.item,
-                    { backgroundColor: item.unread ? CARD_UNREAD : CARD_READ },
-                  ]}
-                  activeOpacity={0.8}
-                  onPress={() => markAsRead(item.id)}
-                >
-                  <View
-                    style={[
-                      styles.itemIcon,
-                      { backgroundColor: look.bg, borderColor: look.color },
-                    ]}
-                  >
-                    <Ionicons name={look.icon} size={20} color={look.color} />
-                  </View>
-
-                  <View style={styles.itemBody}>
-                    <View style={styles.itemTop}>
-                      <Text style={styles.itemTitle} numberOfLines={1}>
-                        {item.title}
-                      </Text>
-                      {item.unread && <View style={styles.unreadDot} />}
-                    </View>
-                    <Text style={styles.itemText}>{item.text}</Text>
-                    <Text style={styles.itemTime}>{item.time}</Text>
-                  </View>
-                </TouchableOpacity>
-              );
-            })
-          )}
+        {/* Card 3 - Anúncio Aprovado */}
+        <View style={styles.cardFilled}>
+          <View style={styles.iconContainer}>
+            <Image
+              source={require("../../assets/SanguineClw.png")}
+              style={styles.cardImage}
+              resizeMode="contain"
+            />
+          </View>
+          <View style={styles.cardContent}>
+            <Text style={styles.cardTitle}>Seu anúncio foi aprovado!</Text>
+            <Text style={styles.cardDescription}>
+              Seu item já está disponível na sua loja
+            </Text>
+            <Text style={styles.cardTime}>Há 10 min</Text>
+          </View>
         </View>
+
+        {/* Seção: Ontem */}
+        <View style={[styles.sectionHeader, { marginTop: 20 }]}>
+          <Text style={styles.sectionTitle}>Ontem</Text>
+        </View>
+
+        {/* Card 4 - Avaliação */}
+        <View style={styles.cardOutlined}>
+          <View style={styles.iconContainer}>
+            <Image
+              source={require("../../assets/StarIcon.png")}
+              style={styles.cardImage}
+              resizeMode="contain"
+            />
+          </View>
+          <View style={styles.cardContent}>
+            <Text style={styles.cardTitle}>Você recebeu uma avaliação</Text>
+            <Text style={styles.cardDescription}>
+              Um cliente avaliou sua compra.
+            </Text>
+            <Text style={styles.cardTime}>Ontem, 15:59</Text>
+          </View>
+        </View>
+
+        {/* Botão de Ação "Inicio" com a função onPress */}
+        <TouchableOpacity
+          style={styles.mainButton}
+          activeOpacity={0.8}
+          onPress={() => {
+            navigation.navigate("Profile");
+          }}
+        >
+          <Text style={styles.mainButtonText}>Voltar</Text>
+        </TouchableOpacity>
       </ScrollView>
 
-      {/* Action Bar fixa no rodapé */}
-      <View style={styles.actionBarWrap}>
-        <ActionBar activeKey="home" />
+      {/* Barra de Ação Customizada (ActionBar) fixada na parte inferior */}
+      <View style={styles.bottomBarContainer}>
+        <ActionBar />
       </View>
     </SafeAreaView>
   );
@@ -254,168 +140,113 @@ export default function NotificationCenterScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#FFFFFF",
   },
   scrollContent: {
-    flexGrow: 1,
-    paddingBottom: 20,
+    paddingHorizontal: 20,
+    paddingTop: 20,
+    paddingBottom: 110, // Espaço extra para o ScrollView não ficar coberto pela ActionBar
   },
-
-  // Todas as seções usam a mesma margem lateral
-  section: {
-    paddingHorizontal: PADDING,
-  },
-
-  // Voltar
-  backWrap: {
-    paddingTop: 12,
-  },
-  backButton: {
-    width: 28,
-    height: 28,
-    borderRadius: 14,
-    borderWidth: 1.5,
-    borderColor: PURPLE,
+  headerContainer: {
     alignItems: "center",
-    justifyContent: "center",
+    marginBottom: 24,
   },
-
-  // Título
-  titleWrap: {
-    alignItems: "center",
-    marginTop: 4,
+  headerTitle: {
+    fontSize: 22,
+    fontWeight: "800",
+    color: "#0D0D0D",
   },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#000",
-  },
-  subtitle: {
+  headerUnderline: {
+    width: 220,
+    height: 3,
+    backgroundColor: "#00A3FF",
     marginTop: 2,
-    fontSize: 12,
-    color: "#6B6B70",
-    textAlign: "center",
+    borderRadius: 2,
   },
-
-  // Filtros
-  filtersRow: {
-    marginTop: 18,
-  },
-  chips: {
+  sectionHeader: {
     flexDirection: "row",
-    gap: 8,
-  },
-  chip: {
-    paddingHorizontal: 16,
-    height: 32,
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: PURPLE,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  chipSelected: {
-    backgroundColor: PURPLE,
-  },
-  chipText: {
-    fontSize: 12,
-    fontWeight: "bold",
-    color: PURPLE,
-  },
-  chipTextSelected: {
-    color: "#fff",
-  },
-
-  // Marcar todas
-  markAllWrap: {
-    marginTop: 12,
-    alignItems: "flex-end",
-  },
-  markAllText: {
-    fontSize: 12,
-    fontWeight: "bold",
-    color: PURPLE,
-  },
-  markAllDisabled: {
-    opacity: 0.4,
-  },
-
-  // Lista
-  list: {
-    marginTop: 10,
-    gap: 10,
-  },
-  item: {
-    flexDirection: "row",
-    alignItems: "flex-start",
-    padding: 12,
-    borderRadius: 14,
-  },
-  itemIcon: {
-    width: 38,
-    height: 38,
-    borderRadius: 19,
-    borderWidth: 2,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  itemBody: {
-    flex: 1,
-    marginLeft: 12,
-  },
-  itemTop: {
-    flexDirection: "row",
-    alignItems: "center",
     justifyContent: "space-between",
-  },
-  itemTitle: {
-    flex: 1,
-    fontSize: 14,
-    fontWeight: "bold",
-    color: "#000",
-  },
-  unreadDot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    marginLeft: 8,
-    backgroundColor: PURPLE,
-  },
-  itemText: {
-    marginTop: 2,
-    fontSize: 12,
-    color: "#000",
-  },
-  itemTime: {
-    marginTop: 6,
-    fontSize: 11,
-    fontWeight: "bold",
-    color: PURPLE,
-  },
-
-  // Vazio
-  empty: {
     alignItems: "center",
-    paddingVertical: 48,
+    marginBottom: 12,
   },
-  emptyTitle: {
-    marginTop: 12,
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: "700",
+    color: "#000000",
+  },
+  badgeText: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#5C38B8",
+  },
+  cardFilled: {
+    flexDirection: "row",
+    backgroundColor: "#EAE6F5",
+    borderRadius: 18,
+    padding: 14,
+    marginBottom: 14,
+    alignItems: "center",
+  },
+  cardOutlined: {
+    flexDirection: "row",
+    backgroundColor: "#FFFFFF",
+    borderRadius: 18,
+    borderWidth: 1.5,
+    borderColor: "#7A52B3",
+    padding: 14,
+    marginBottom: 24,
+    alignItems: "center",
+  },
+  iconContainer: {
+    width: 55,
+    height: 55,
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: 12,
+  },
+  cardImage: {
+    width: "100%",
+    height: "100%",
+  },
+  cardContent: {
+    flex: 1,
+  },
+  cardTitle: {
     fontSize: 15,
-    fontWeight: "bold",
-    color: "#000",
+    fontWeight: "700",
+    color: "#0D0D0D",
+    marginBottom: 3,
   },
-  emptyText: {
-    marginTop: 4,
+  cardDescription: {
+    fontSize: 13,
+    color: "#2D2D2D",
+    fontWeight: "400",
+    lineHeight: 18,
+    marginBottom: 4,
+  },
+  cardTime: {
     fontSize: 12,
-    color: "#6B6B70",
-    textAlign: "center",
+    fontWeight: "600",
+    color: "#2D2D2D",
   },
-
-  // Action bar
-  actionBarWrap: {
-    paddingTop: 12,
-    paddingBottom: 8,
-    backgroundColor: "#fff",
+  mainButton: {
+    backgroundColor: "#6247AA",
+    borderRadius: 30,
+    paddingVertical: 14,
+    alignItems: "center",
+    marginTop: 10,
+    marginBottom: 20,
+  },
+  mainButtonText: {
+    color: "#FFFFFF",
+    fontSize: 18,
+    fontWeight: "700",
+  },
+  bottomBarContainer: {
+    position: "absolute",
+    bottom: 20,
+    left: 0,
+    right: 0,
+    alignItems: "center",
   },
 });
