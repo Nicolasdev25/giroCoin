@@ -2,14 +2,14 @@
 
   <img src="./assets/branding.png" alt="GiroCoin Banner" width="100%" />
 
-  # 🎮 GiroCoin — Mobile Marketplace
+# 🎮 GiroCoin — Mobile Marketplace
 
-  **"Seu jogo. Seu próximo level."**  
-  *Conectando jogadores, facilitando trocas e impulsionando novas conquistas.*
+**"Seu jogo. Seu próximo level."**  
+ _Conectando jogadores, facilitando trocas e impulsionando novas conquistas._
 
-  [![React Native](https://img.shields.io/badge/React%20Native-0.72%2B-blue?style=for-the-badge&logo=react)](https://reactnative.dev/)
-  [![Expo](https://img.shields.io/badge/Expo-Go-000000?style=for-the-badge&logo=expo)](https://expo.dev/)
-  [![License](https://img.shields.io/badge/License-MIT-purple?style=for-the-badge)](LICENSE)
+[![React Native](https://img.shields.io/badge/React%20Native-0.72%2B-blue?style=for-the-badge&logo=react)](https://reactnative.dev/)
+[![Expo](https://img.shields.io/badge/Expo-Go-000000?style=for-the-badge&logo=expo)](https://expo.dev/)
+[![License](https://img.shields.io/badge/License-MIT-purple?style=for-the-badge)](LICENSE)
 
 </div>
 
@@ -17,7 +17,7 @@
 
 ## 📌 Sobre o Projeto
 
-O **GiroCoin** é um *mobile marketplace* completo desenvolvido especialmente para a comunidade gamer. A plataforma funciona como um ponto de encontro e negociação seguro onde jogadores podem comprar e vender moedas virtuais (**GiroCoins**), adquirir itens raros de jogos e contratar serviços (*boosts*, suporte e acompanhamento *in-game*).
+O **GiroCoin** é um _mobile marketplace_ completo desenvolvido especialmente para a comunidade gamer. A plataforma funciona como um ponto de encontro e negociação seguro onde jogadores podem comprar e vender moedas virtuais (**GiroCoins**), adquirir itens raros de jogos e contratar serviços (_boosts_, suporte e acompanhamento _in-game_).
 
 > **Nossa Missão:** Jogadores conectam mundos. Nós conectamos você a eles!
 
@@ -34,7 +34,7 @@ O **GiroCoin** é um *mobile marketplace* completo desenvolvido especialmente pa
       </td>
       <td align="center" width="25%">
         <b>Tela de Login</b><br/><br/>
-        <img src="./assets/login.png" width="100%" alt="Tela de Login" />
+        <img src="../../giroCoin/assets/login.png" width="100%" alt="Tela de Login" />
       </td>
       <td align="center" width="25%">
         <b>Home / Dashboard</b><br/><br/>
@@ -62,12 +62,12 @@ A marca **GiroCoin** foi planejada para transmitir confiabilidade, inovação e 
 
 ### 🎨 Paleta de Cores & Elementos
 
-| Cor | Nome | Aplicação / Significado | Código Hex |
-| :---: | :--- | :--- | :---: |
-| 🟡 | **Ouro** | Representa valor, conquista, raridade e prestígio *in-game*. | `#FFC700` |
-| 🟣 | **Roxo** | Simboliza inovação, magia, crescimento e o ecossistema gamer. | `#4B318B` |
-| 🔵 | **Azul** | Transmite confiança, comunidade, segurança e estabilidade. | `#00A3FF` |
-| ⬛ | **Preto** | Traz a elegância do universo gamer, foco e modernidade. | `#0D0D0D` |
+| Cor | Nome      | Aplicação / Significado                                       | Código Hex |
+| :-: | :-------- | :------------------------------------------------------------ | :--------: |
+| 🟡  | **Ouro**  | Representa valor, conquista, raridade e prestígio _in-game_.  | `#FFC700`  |
+| 🟣  | **Roxo**  | Simboliza inovação, magia, crescimento e o ecossistema gamer. | `#4B318B`  |
+| 🔵  | **Azul**  | Transmite confiança, comunidade, segurança e estabilidade.    | `#00A3FF`  |
+| ⬛  | **Preto** | Traz a elegância do universo gamer, foco e modernidade.       | `#0D0D0D`  |
 
 > **Conceito da Logomarca:** A letra **G** (formada pelos arcos roxo e azul) envolve a moeda de ouro em um ciclo contínuo (loop), representando um marketplace em movimento constante onde trocas acontecem com segurança.
 
@@ -76,10 +76,10 @@ A marca **GiroCoin** foi planejada para transmitir confiabilidade, inovação e 
 ## ✨ Funcionalidades Principais
 
 - 🔍 **Busca e Filtros Inteligentes**: Barra de busca dinâmicapara encontrar rapidamente moedas, itens e serviços.
-- 🪙 **Pacotes GiroCoin**: Escolha e adquira créditos virtuais (250, 500, 750 Giro Coins) para resgate imediato nas *stores in-game*.
+- 🪙 **Pacotes GiroCoin**: Escolha e adquira créditos virtuais (250, 500, 750 Giro Coins) para resgate imediato nas _stores in-game_.
 - 🔔 **Central de Notificações**: Acompanhamento em tempo real do status de pedidos, aprovação de anúncios e avaliações recebidas.
 - 🔐 **Autenticação Flexível**: Login seguro por e-mail e senha com suporte a Login Social (Google, Apple e Instagram).
-- 🧭 **Barra de Navegação Animada (`ActionBar`)**: Menu inferior em estilo *pílula* flutuante que se desloca suavemente entre as abas ativas.
+- 🧭 **Barra de Navegação Animada (`ActionBar`)**: Menu inferior em estilo _pílula_ flutuante que se desloca suavemente entre as abas ativas.
 
 ---
 
@@ -135,17 +135,20 @@ girocoin-mobile/
 ### Passo a Passo
 
 1. **Clone o repositório:**
+
    ```bash
    git clone https://github.com/seu-usuario/girocoin-mobile.git
    cd girocoin-mobile
    ```
 
 2. **Instale as dependências:**
+
    ```bash
    npm install
    ```
 
 3. **Inicie o servidor do Expo com cache limpo:**
+
    ```bash
    npx expo start -c
    ```
