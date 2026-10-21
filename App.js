@@ -24,6 +24,8 @@ import ProfileScreen from "./src/screens/ProfileScreen";
 import ForgotPasswordScreen from "./src/screens/ForgotPasswordScreen";
 import PasswordRecoveredScreen from "./src/screens/PasswordRecoveredScreen";
 import SplashScreen from "./src/screens/SplashScreen";
+import CardScreen from "./src/screens/CardScreen";
+import NotScreen from "./src/screens/NotScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -54,9 +56,11 @@ export default function App() {
         <Stack.Screen name="verifyIden" component={VerifyIdentityScreen} />
         <Stack.Screen name="PayScreen" component={PayScreen} />
         <Stack.Screen name="PixScreen" component={PixScreen} />
+        <Stack.Screen name="CardScreen" component={CardScreen} />
         <Stack.Screen name="ApprovedScreen" component={ApprovedScreen} />
         <Stack.Screen name="ReviewScreen" component={ReviewScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="NotScreen" component={NotScreen} />
         <Stack.Screen
           name="ForgotPasswordScreen"
           component={ForgotPasswordScreen}

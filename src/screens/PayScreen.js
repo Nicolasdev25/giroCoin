@@ -241,7 +241,9 @@ export default function PaymentScreen({ navigation, route }) {
             if (method === "pix") {
               navigation.navigate("PixScreen", { quantity, total });
             }
-            // pagamento com cartão: entra aqui depois
+            if (method === "card") {
+              navigation.navigate("CardScreen", { quantity, total });
+            }
           }}
         >
           <Ionicons

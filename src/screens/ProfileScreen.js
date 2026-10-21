@@ -50,6 +50,20 @@ export default function ProfileScreen({ navigation }) {
         contentContainerStyle={styles.scrollContainer}
         showsVerticalScrollIndicator={false}
       >
+        {/* Botão voltar: volta para a tela anterior; se não houver, vai para a Home */}
+        <TouchableOpacity
+          style={styles.backButton}
+          activeOpacity={0.7}
+          hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+          onPress={() =>
+            navigation.canGoBack()
+              ? navigation.goBack()
+              : navigation.navigate("Home")
+          }
+        >
+          <Feather name="chevron-left" size={18} color="#4B318B" />
+        </TouchableOpacity>
+
         {/* Cabeçalho */}
         <View style={styles.header}>
           <Text style={styles.mainTitle}>Meu perfil</Text>
@@ -182,8 +196,20 @@ const styles = StyleSheet.create({
   safeArea: { flex: 1, backgroundColor: "#FFFFFF" },
   scrollContainer: {
     paddingHorizontal: 18,
-    paddingTop: 28,
+    paddingTop: 12,
     paddingBottom: 24,
+  },
+
+  // Botão voltar (igual ao das outras telas)
+  backButton: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    borderWidth: 1.5,
+    borderColor: "#4B318B",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 16,
   },
 
   // Cabeçalho

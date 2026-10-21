@@ -60,10 +60,12 @@ export default function HomeScreen({ navigation }) {
             source={require("../../assets/girocoinlogo.png")}
             style={styles.logo}
           />
-          <Image
-            source={require("../../assets/notification_Icon.png")}
-            style={styles.notIcon}
-          />
+          <TouchableOpacity onPress={() => navigation.navigate("NotScreen")}>
+            <Image
+              source={require("../../assets/notification_Icon.png")}
+              style={styles.notIcon}
+            />
+          </TouchableOpacity>
         </View>
 
         {/* Título e subtítulo */}
