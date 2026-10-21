@@ -42,7 +42,7 @@ O **GiroCoin** é um _mobile marketplace_ completo desenvolvido especialmente pa
       </td>
       <td align="center" width="25%">
         <b>Notificações</b><br/><br/>
-        <img src="./assets/manual.jpg" width="100%" alt="Notificações do Dia" />
+        <img src="./assets/notifications.png" width="100%" alt="Notificações do Dia" />
       </td>
     </tr>
   </table>
@@ -55,7 +55,7 @@ O **GiroCoin** é um _mobile marketplace_ completo desenvolvido especialmente pa
 A marca **GiroCoin** foi planejada para transmitir confiabilidade, inovação e paixão pelo universo gamer.
 
 <div align="center">
-  <img src="./assets/branding.png" alt="Manual de Identidade Visual GiroCoin" width="100%" />
+  <img src="./assets/manual.jpg" alt="Manual de Identidade Visual GiroCoin" width="100%" />
 </div>
 
 <br/>
