@@ -172,7 +172,7 @@ export default function HomeScreen({ navigation }) {
         </View>
       </ScrollView>
 
-      {/* Action Bar fixa no rodapé */}
+      {/* Action Bar  */}
       <View style={styles.actionBarWrap}>
         <ActionBar />
       </View>

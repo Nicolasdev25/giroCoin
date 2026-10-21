@@ -11,7 +11,6 @@ import {
 import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function PersonalDataScreen({ navigation }) {
-  // Componente reutilizável para cada bloco de informação pessoal
   const InfoCard = ({ icon, label, value, onPress }) => (
     <TouchableOpacity
       style={styles.infoCard}
@@ -71,7 +70,7 @@ export default function PersonalDataScreen({ navigation }) {
             label="E-mail"
             value="joao@example.com"
           />
-          {/* Nota: Mantido "Nome completo" conforme o layout original (pode alterar para "Celular" se preferir) */}
+
           <InfoCard
             icon="cellphone"
             label="Número de celular"

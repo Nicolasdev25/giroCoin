@@ -12,18 +12,6 @@ import {
 
 import { useNavigation, useRoute } from "@react-navigation/native";
 
-// ====== Abas da barra ======
-
-// icon       = ícone da aba (PNG amarelo)
-
-// iconActive = (opcional) versão alternativa para quando a aba está ativa.
-
-// Sem iconActive, o ícone ativo é pintado de roxo automaticamente (tintColor).
-
-// route      = nome da tela no seu navigator (o mesmo do <Stack.Screen name="...">).
-
-//              Deixe null nas abas cujas telas ainda não existem.
-
 const TABS = [
   {
     key: "home",
@@ -32,7 +20,7 @@ const TABS = [
 
     icon: require("../../assets/home-icon.png"),
 
-    route: "Home", // <- troque se sua tela Home tiver outro nome no navigator
+    route: "Home",
   },
 
   {
@@ -99,14 +87,6 @@ export default function ActionBar({ onChange, activeKey }) {
 
   const { width: screenWidth } = useWindowDimensions();
 
-  // Como cada tela tem sua própria ActionBar, a aba ativa começa
-
-  // na aba que corresponde à tela atual (e não sempre no "Inicio")
-
-  // activeKey (opcional) força a aba ativa em telas que não são uma aba,
-
-  // por exemplo <ActionBar activeKey="carrinho" /> na tela de pagamento
-
   const initialIndex = Math.max(
     0,
 
@@ -117,7 +97,7 @@ export default function ActionBar({ onChange, activeKey }) {
 
   const [index, setIndex] = useState(initialIndex);
 
-  const progress = useRef(new Animated.Value(initialIndex)).current; // 0..4, posição da pílula
+  const progress = useRef(new Animated.Value(initialIndex)).current;
 
   // A barra ocupa a tela toda, menos a margem lateral
 
