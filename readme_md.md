@@ -30,19 +30,19 @@ O **GiroCoin** é um _mobile marketplace_ completo desenvolvido especialmente pa
     <tr>
       <td align="center" width="25%">
         <b>Splash Screen</b><br/><br/>
-        <img src="./assets/splash.png" width="100%" alt="Splash Screen" />
+        <img src="./assets/splash.jpg" width="100%" alt="Splash Screen" />
       </td>
       <td align="center" width="25%">
         <b>Tela de Login</b><br/><br/>
-        <img src="../../giroCoin/assets/login.png" width="100%" alt="Tela de Login" />
+        <img src="../../giroCoin/assets/login.jpg" width="100%" alt="Tela de Login" />
       </td>
       <td align="center" width="25%">
         <b>Home / Dashboard</b><br/><br/>
-        <img src="./assets/dashboard.png" width="100%" alt="Home Dashboard" />
+        <img src="./assets/dashboard.jpg" width="100%" alt="Home Dashboard" />
       </td>
       <td align="center" width="25%">
         <b>Notificações</b><br/><br/>
-        <img src="./assets/notifications.png" width="100%" alt="Notificações do Dia" />
+        <img src="./assets/notifications.jpg" width="100%" alt="Notificações do Dia" />
       </td>
     </tr>
   </table>
