@@ -45,10 +45,9 @@ const CARDS = [
 ];
 
 const PADDING = 20; // margem lateral única para toda a tela
-const GAP = 10; // espaço entre atalhos e entre cards
+const GAP = 10;
 
 export default function HomeScreen({ navigation }) {
-  // Larguras calculadas a partir da tela: nada passa da margem
   const { width } = useWindowDimensions();
   const contentWidth = width - PADDING * 2;
   const shortcutWidth = Math.floor((contentWidth - GAP) / 2);
@@ -66,10 +65,12 @@ export default function HomeScreen({ navigation }) {
             source={require("../../assets/girocoinlogo.png")}
             style={styles.logo}
           />
-          <Image
-            source={require("../../assets/notification_Icon.png")}
-            style={styles.notIcon}
-          />
+          <TouchableOpacity onPress={() => navigation.navigate("NotScreen")}>
+            <Image
+              source={require("../../assets/notification_Icon.png")}
+              style={styles.notIcon}
+            />
+          </TouchableOpacity>
         </View>
 
         {/* Título e subtítulo */}

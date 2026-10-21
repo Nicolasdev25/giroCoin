@@ -28,10 +28,12 @@ export default function NewScreen({ navigation }) {
             source={require("../../assets/girocoinlogo.png")}
             style={styles.logo}
           />
-          <Image
-            source={require("../../assets/notification_Icon.png")}
-            style={styles.notIcon}
-          />
+          <TouchableOpacity onPress={() => navigation.navigate("NotScreen")}>
+            <Image
+              source={require("../../assets/notification_Icon.png")}
+              style={styles.notIcon}
+            />
+          </TouchableOpacity>
         </View>
 
         {/* Título e subtítulo */}
@@ -118,7 +120,6 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
 
-  // Todas as seções usam a mesma margem lateral
   section: {
     paddingHorizontal: PADDING,
   },

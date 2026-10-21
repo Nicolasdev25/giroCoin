@@ -11,10 +11,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import ActionBar from "../components/ActionBar";
 
-const PADDING = 20; // margem lateral única para toda a tela
+const PADDING = 20;
 const PURPLE = "#4B318B";
-const CARD_STORE = "#D3CDE6"; // cards grandes
-const CARD_INNER = "#E6E2F2"; // card interno claro
+const CARD_STORE = "#D3CDE6";
+const CARD_INNER = "#E6E2F2";
 
 const PACK_SIZE = 250;
 const UNIT_PRICE = 48.25;
@@ -32,11 +32,9 @@ const addMinutes = (date, minutes) =>
   new Date(date.getTime() + minutes * 60 * 1000);
 
 export default function ApprovedScreen({ navigation, route }) {
-  // Vem da tela anterior: navigate("ApprovedScreen", { quantity, total })
   const quantity = route?.params?.quantity ?? 1;
   const total = route?.params?.total ?? UNIT_PRICE * quantity;
 
-  // Horário da confirmação = momento em que a tela abre (exemplo)
   const [confirmedAt] = useState(() => new Date());
 
   const steps = [
