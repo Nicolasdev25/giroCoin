@@ -42,7 +42,7 @@ O **GiroCoin** é um *mobile marketplace* completo desenvolvido especialmente pa
       </td>
       <td align="center" width="25%">
         <b>Notificações</b><br/><br/>
-        <img src="./assets/notifications.png" width="100%" alt="Notificações do Dia" />
+        <img src="./assets/manual.jpg" width="100%" alt="Notificações do Dia" />
       </td>
     </tr>
   </table>
