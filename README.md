@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="./assets/branding.png" alt="GiroCoin Banner" width="100%" />
+  <img src="./assets/girocoinlogo.png" alt="GiroCoin Banner" width="100%" />
 
   # 🎮 GiroCoin — Mobile Marketplace
 
